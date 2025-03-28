@@ -8,10 +8,10 @@
  *
  * @author sergiogmc2001
  */
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.File;
 
 public class RecipeList {
 
@@ -23,16 +23,22 @@ public class RecipeList {
         this.file = new File(file);
     }
     
-    public void readFile() {
+    public void addRecipes() {
         try (Scanner scanner = new Scanner(this.file)) {
             while (scanner.hasNextLine()) {
                 String name = scanner.nextLine();
                 int time = Integer.valueOf(scanner.nextLine());
                 
                 Recipe recipe = new Recipe(name, time);
-                while (!(scanner.nextLine().isEmpty())) {
-                    recipe.addIngredients(scanner.nextLine());
-                }
+                String ingredient = scanner.nextLine();
+                while (!(ingredient.isEmpty())) {
+                    recipe.addIngredients(ingredient);
+                    
+                    if (!(scanner.hasNextLine())) {
+                        break;
+                    }
+                    ingredient = scanner.nextLine();
+                }             
                 this.list.add(recipe);
             }
         
@@ -43,12 +49,38 @@ public class RecipeList {
     
     public void getList() {
         for  (Recipe recipe: this.list) {
-            recipe.getName();
+            printRecipe(recipe.getName(), recipe.getTime());
         }
     }
 
-    public void addRecipe() {
-        
+    public void findByName(String name) {
+        for (Recipe recipe: this.list) {
+
+            if (recipe.getName().contains(name)) {
+                printRecipe(recipe.getName(), recipe.getTime());
+            } else {
+            }
+        }
+    }
+
+    public void findByTime(int time) {
+        for (Recipe recipe: this.list) {
+            if (recipe.getTime() <= time) {
+                printRecipe(recipe.getName(), recipe.getTime());
+            }
+
+        }
+    }
+
+    public void findByIngredient(int String) {
+        for (Recipe recipe: this.list) {
+            
+        }
+
+    }
+
+    public void printRecipe(String name, int time) {
+        System.out.println(name + ", cooking time: " + time);
     }
 
 }

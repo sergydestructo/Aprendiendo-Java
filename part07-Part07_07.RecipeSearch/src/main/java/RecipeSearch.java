@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RecipeSearch {
@@ -8,21 +7,9 @@ public class RecipeSearch {
         Scanner scanner = new Scanner(System.in);
         
         
-        System.out.print("File to read: ");
-        String fileInput = scanner.nextLine();
-        
-        RecipeFinder searcher = new RecipeFinder(fileInput);
-        
-        RecipeList list = new RecipeList(fileInput);
-        
-      /*  UI ui = new UI(scanner, searcher);
+        UI ui = new UI(scanner);
         
         ui.start();
-      */
-      
-      list.getList();
-        
-
     }
 
 }
