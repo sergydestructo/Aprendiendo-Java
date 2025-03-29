@@ -72,9 +72,14 @@ public class RecipeList {
         }
     }
 
-    public void findByIngredient(int String) {
+    public void findByIngredient(String input) {
         for (Recipe recipe: this.list) {
-            
+            for (Object ingredient : recipe.getIngredients()) {
+                if (ingredient.equals(input)) {
+                    printRecipe(recipe.getName(), recipe.getTime());
+                    break;
+                }
+            }
         }
 
     }

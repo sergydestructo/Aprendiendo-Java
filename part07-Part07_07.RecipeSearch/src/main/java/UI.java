@@ -31,7 +31,8 @@ public class UI {
                     + "list - lists the recipes\n"
                     + "stop - stops the program \n"
                     + "find name - searches recipes by name \n"
-                    + "find cooking time - searches recipes by cooking time \n");
+                    + "find cooking time - searches recipes by cooking time \n"
+                    + "find ingredient - searches recipes by ingredient \n");
 
             System.out.print("Enter command: ");
             String input = this.scanner.nextLine();
@@ -53,6 +54,13 @@ public class UI {
                 int intInput = Integer.parseInt(this.scanner.nextLine());
                 System.out.println("Recipes:");
                 this.recipes.findByTime(intInput);
+                System.out.println("");
+
+            } else if (input.equals("find ingredient")) {
+                System.out.print("Ingredient: ");
+                input = this.scanner.nextLine();
+                System.out.println("Recipes: ");
+                this.recipes.findByIngredient(input);
                 System.out.println("");
 
             } else if (input.equals("stop")) {
